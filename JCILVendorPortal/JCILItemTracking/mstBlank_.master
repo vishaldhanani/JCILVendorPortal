@@ -1,0 +1,8 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/JCILItemTracking/mstDefault.Master" AutoEventWireup="true" CodeBehind="mstBlank_.master.cs" Inherits="JCILVendorPortal.JCILItemTracking.mstBlank_" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="mstDefaultHead" runat="server">
+    <asp:ContentPlaceHolder ID="mstBlankHead" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="mstDefaultBody" runat="server">
+    <asp:ContentPlaceHolder ID="mstBlankBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

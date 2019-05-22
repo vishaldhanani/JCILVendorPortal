@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 15.5" name="VendorLinq">
+  <DataContextMoniker Name="/VendorLinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="42217a83-8559-49ca-b8d3-036a2fcb6880" absoluteBounds="3.5, 6.125, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/VendorLinqDataContext/Busi_Annul_Turnover" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e78f974c-0cb4-4545-9bee-749d24dc2ba8" absoluteBounds="3.515, 6.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a61ad7f2-b5e3-4ab9-8522-bbcdc2c115a3" absoluteBounds="3.5, 8.625, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/VendorLinqDataContext/Busi_Cust_Ref" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9106cfcf-154a-47f8-be30-91c0d2fc3c0f" absoluteBounds="3.515, 9.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="800401ab-df2a-46cc-82f8-17c167176427" absoluteBounds="3.75, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/VendorLinqDataContext/Table" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1cdb31c-6d25-4204-95ed-d459f8265296" absoluteBounds="3.765, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4b6b785-b675-42e4-8647-d82bff503ff4" absoluteBounds="6.75, 0.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/VendorLinqDataContext/VendorLogin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a749a4e-99eb-4c0a-a325-406cb5c2dc50" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24a9a46d-52d2-4297-a2d0-4ddafc323a07" absoluteBounds="0.75, 1.5, 2, 13.693585611979163">
+      <DataClassMoniker Name="/VendorLinqDataContext/VendorRegistration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50fa8c14-ecfe-4dea-b5fe-18828c143d9c" absoluteBounds="0.765, 1.96, 1.9700000000000002, 13.133585611979166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 7.01044840494792); (3.5 : 7.01044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/VendorLinqDataContext/VendorRegistration/VendorRegistration_Busi_Annul_Turnover" />
+      <nodes>
+        <classShapeMoniker Id="24a9a46d-52d2-4297-a2d0-4ddafc323a07" />
+        <classShapeMoniker Id="42217a83-8559-49ca-b8d3-036a2fcb6880" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.50522420247396); (3.5 : 6.50522420247396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/VendorLinqDataContext/VendorRegistration/VendorRegistration_Busi_Annul_Turnover1" />
+      <nodes>
+        <classShapeMoniker Id="24a9a46d-52d2-4297-a2d0-4ddafc323a07" />
+        <classShapeMoniker Id="42217a83-8559-49ca-b8d3-036a2fcb6880" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.60659912109375); (3.5 : 9.60659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/VendorLinqDataContext/VendorRegistration/VendorRegistration_Busi_Cust_Ref" />
+      <nodes>
+        <classShapeMoniker Id="24a9a46d-52d2-4297-a2d0-4ddafc323a07" />
+        <classShapeMoniker Id="a61ad7f2-b5e3-4ab9-8522-bbcdc2c115a3" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

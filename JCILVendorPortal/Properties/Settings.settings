@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JCILVendorPortal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="JCILVendorPortal_Serv_Vendor_WS_NAV_Vendor_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.6.60:8047/Test_Jay/WS/JAY/Page/WS_NAV_Vendor</Value>
+    </Setting>
+    <Setting Name="JCILVendorPortal_CodeUnit_AllFuncs_Web_Order_Mail" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.6.60:8047/Test_Jay/WS/JAY/Codeunit/Web_Order_Mail</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

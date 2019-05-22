@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2391477929a141db9ef15dfa8a085e48" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="VendorPortalModel.Busi_Annul_Turnover" Width="1.5" PointX="1.3934022474071952" PointY="2.0597352991158773" IsExpanded="true" />
+        <EntityTypeShape EntityType="VendorPortalModel.Busi_Cust_Ref" Width="1.5" PointX="4.4820745310197" PointY="28.559757260866352" />
+        <EntityTypeShape EntityType="VendorPortalModel.DashboardMenu" Width="1.5" PointX="1.4689476422355265" PointY="24.392836731110158" />
+        <EntityTypeShape EntityType="VendorPortalModel.LogHistory" Width="1.5" PointX="9.2846723353884517" PointY="29.560126780327469" />
+        <EntityTypeShape EntityType="VendorPortalModel.VendorAccessLog" Width="1.5" PointX="8.3017451969449141" PointY="24.337505143292947" />
+        <EntityTypeShape EntityType="VendorPortalModel.VendorLogin" Width="1.5" PointX="0.040485324356930946" PointY="28.606957568138352" />
+        <EntityTypeShape EntityType="VendorPortalModel.VendorRegistration" Width="1.5" PointX="1.006149676165613" PointY="30.328637211736588" />
+        <AssociationConnector Association="VendorPortalModel.FK__Busi_Annu__Vendo__3E52440B" />
+        <AssociationConnector Association="VendorPortalModel.FK__Busi_Annu__Vendo__3F466844" />
+        <AssociationConnector Association="VendorPortalModel.FK__Busi_Cust__Vendo__4222D4EF" />
+        <AssociationConnector Association="VendorPortalModel.FK_VendorAccessLog_DashboardMenu" />
+        <AssociationConnector Association="VendorPortalModel.FK_LogHistory_VendorLogin" />
+        <AssociationConnector Association="VendorPortalModel.FK_VendorAccessLog_VendorLogin" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

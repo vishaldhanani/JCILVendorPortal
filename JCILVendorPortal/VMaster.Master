@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="VMaster.master.cs" Inherits="JCILVendorPortal.VMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Vendor Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+
+
+
+    <link href="css/style.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        body {
+            background: url("Images/jay-logo-footer-bg.png") fixed no-repeat bottom center;
+        }
+
+        .show_hide {
+            display: none;
+        }
+
+        .navbar .nav li.dropdown.open > .dropdown-toggle {
+            background-color: none;
+        }
+        /*.a {
+            font: 2em Arial;
+            text-decoration: none;
+        }*/
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".slidingDiv").hide();
+            $(".show_hide").show();
+
+            $('.show_hide').toggle(function () {
+                $(".slidingDiv").slideDown();
+
+            }, function () {
+                $(".slidingDiv").slideUp();
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand logo" href="frmDashBoard.aspx">
+                            <img class="inner-logo" title="Home" src="Images/jay-logo-new.png" />
+                        </a>
+                        <div>
+                            <center>
+                                <asp:Label ID="lblPageCenterHeader" Style="color:white;"  Text="Home" runat="server"></asp:Label>
+                            </center>
+                        </div>
+                        <div class="nav-collapse">
+                            <ul class="nav pull-right">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-user"></i>
+                                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu" style="width: 224px;">
+                                        <li><a class="show_hide" id="plus" style="font-size: 12px;">Profile <i class="icon-large icon-caret-down" style="padding-left: 134px;"></i></a>
+                                            <p class="slidingDiv" style="display: block; width: 85.7%; margin: 0px auto;">
+                                                Nav UserName: &nbsp;<asp:Label ID="lblNavUser" runat="server" Font-Size="11px"></asp:Label><br />
+                                                Type of User: &nbsp;<asp:Label ID="lblTypUser" runat="server" Font-Size="11px"></asp:Label>
+                                            </p>
+                                        </li>
+                                        <li><a href="Logout.aspx" onclick="return confirm('Are you sure to logout?');">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="navbar navbar-fixed-bottom">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <asp:LinkButton ID="LinkBackbuttonDynamic" runat="server" Style="font: 50px; float: right; color: white;" Text=""> </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+            <script src="js/bootstrap.js"></script>
+            <script src="js/base.js"></script>
+    </form>
+</body>
+</html>

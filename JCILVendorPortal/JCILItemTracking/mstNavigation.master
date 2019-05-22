@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/JCILItemTracking/mstDefault.Master" AutoEventWireup="true" CodeBehind="mstNavigation.master.cs" Inherits="JCILVendorPortal.JCILItemTracking.mstNavigation" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="mstDefaultHead" runat="server">
+    <asp:ContentPlaceHolder ID="mstNavHead" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="mstDefaultBody" runat="server">
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="blue darken-2" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="Dashboard" id="logo-container" class="brand-logo circle blue darken-2" style="padding: 10px 20px;">
+                        <img src="JCILItemTracking/assets/Images/jay-logo-new.png" style="width: 75px; height: 64px;" />
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <asp:Repeater ID="rptNavigationlg" runat="server">
+                            <ItemTemplate>
+                                <li>
+                                    <asp:HyperLink ID="navLink" runat="server" NavigateUrl='<% #Eval("PageControl")%>' Text='<% #Eval("PageTag")%>'>
+                                    </asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                       <%-- <li>
+                            <li>
+                                <a class="dropdown-button" href="#!" data-activates="dropdown1">User
+                                    <i class="material-icons right">arrow_drop_down
+                                    </i>
+                                </a>
+                            </li>
+                        </li>--%>
+                    </ul>
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="SignOut" onclick="return confirm('Are you sure to logout?');">Signout</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <asp:Repeater ID="rptNavigationMobile" runat="server">
+                            <ItemTemplate>
+                                <li>
+                                    <asp:HyperLink ID="navLink" runat="server" NavigateUrl='<% #Eval("PageControl")%>' Text='<% #Eval("PageTag")%>'>
+                                    </asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                       <%-- <li>
+                            <a class="dropdown-button" href="#!" data-activates="dropdown2">User
+                                <i class="material-icons right">arrow_drop_down
+                                </i>
+                            </a>
+                        </li>--%>
+                    </ul>
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li><a href="SignOut" onclick="return confirm('Are you sure to logout?');">Signout</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse" style="margin-left: 10px;"><i class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <br />
+    <asp:ContentPlaceHolder ID="mstNavBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

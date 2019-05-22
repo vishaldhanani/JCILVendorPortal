@@ -1,0 +1,13 @@
+﻿body {
+    background: url(../Images/login-bg.jpg) no-repeat;
+    background-size: cover;
+    text-align: center;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.loginArea {
+    margin-top: 170px;
+}
+
+

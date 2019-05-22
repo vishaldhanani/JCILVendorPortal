@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VendorPortal" Class="VendorLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.6.60;Initial Catalog=VendorPortal;User ID=sa;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="VendorLib.Properties.Settings" SettingsPropertyName="VendorPortalConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Busi_Annul_Turnover" Member="Busi_Annul_Turnovers">
+    <Type Name="Busi_Annul_Turnover">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VendorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Year3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="VendorRegistration_Busi_Annul_Turnover" Member="VendorRegistration" ThisKey="VendorId" OtherKey="ID" Type="VendorRegistration" IsForeignKey="true" />
+      <Association Name="VendorRegistration_Busi_Annul_Turnover1" Member="VendorRegistration1" ThisKey="VendorId" OtherKey="ID" Type="VendorRegistration" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Busi_Cust_Ref" Member="Busi_Cust_Refs">
+    <Type Name="Busi_Cust_Ref">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Customer Name]" Member="Customer_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[Contact Person]" Member="Contact_Person" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Contact Number]" Member="Contact_Number" Type="System.Data.Linq.Binary" DbType="VarBinary(20)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="VendorRegistration_Busi_Cust_Ref" Member="VendorRegistration" ThisKey="VendorID" OtherKey="ID" Type="VendorRegistration" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Table]" Member="Tables">
+    <Type Name="Table">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[Free Resource ]" Member="Free_Resource_" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Download" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VendorLogin" Member="VendorLogins">
+    <Type Name="VendorLogin">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NavUserName" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="NavPassword" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeOfUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ActiveUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VendorRegistration" Member="VendorRegistrations">
+    <Type Name="VendorRegistration">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceRef" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeofBusi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SourceRefInquiryBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SourceRefExternal" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SourceRefExternalOrgName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SourceRefExternalContNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TypeofBusiForServiceProvider" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Title" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VendorName_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PremisesNo_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address_1_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address_2_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address_3_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="City_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="StateRegion_HO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PinCode_HO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VendorName_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PremisesNo_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address_1_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address_2_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Address_3_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="City_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="StateRegion_WS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PinCode_WS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WebSite" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Con_PropDirPar_Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Con_PropDirPar_PhoneNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Con_PropDirPar_MobileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Con_PropDirPar_EmailID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Con_SalesDep_Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Con_SalesDep_PhoneNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Con_SalesDep_MobileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Con_SalesDep_EmailID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Con_AccDep_Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Con_AccDep_PhoneNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Con_AccDep_MobileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Con_AccDep_EmailID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PaymentTerm" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="TotalStrengthOfManPower" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShipmentTerm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="For_SOM_CSTNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="For_SOM_VatNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="For_SOM_PanNo" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="For_SOM_TanNo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="For_SOM_MicroSmallMediumEnterprise" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="For_SOM_MSMERegNo" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_SOM_RegisteredwithExcise" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_SOM_ECCNo" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_SOM_ExciseRange" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_SOM_ExciseDivision" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_SOM_ExciseCollectorate" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_Others_PanNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="For_Others_ServcieTaxRegNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="For_Others_PFRegNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="For_Others_ESIRegNo" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_Others_ContractLicenseNo" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="For_Others_TDS_Applicability" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="For_Others_LowerDeductionCertiNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BankName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="BankBrachName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="BankAccNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeofAcc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IFSCode" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="MICRCODE" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="Bank_EmailID_UTR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BankingMobileNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="VendorRegistration_Busi_Annul_Turnover" Member="Busi_Annul_Turnovers" ThisKey="ID" OtherKey="VendorId" Type="Busi_Annul_Turnover" />
+      <Association Name="VendorRegistration_Busi_Annul_Turnover1" Member="Busi_Annul_Turnovers1" ThisKey="ID" OtherKey="VendorId" Type="Busi_Annul_Turnover" />
+      <Association Name="VendorRegistration_Busi_Cust_Ref" Member="Busi_Cust_Refs" ThisKey="ID" OtherKey="VendorID" Type="Busi_Cust_Ref" />
+    </Type>
+  </Table>
+</Database>

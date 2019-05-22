@@ -1,0 +1,1335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VendorPortalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="VendorPortalModelStoreContainer">
+          <EntitySet Name="Busi_Annul_Turnover" EntityType="VendorPortalModel.Store.Busi_Annul_Turnover" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Busi_Cust_Ref" EntityType="VendorPortalModel.Store.Busi_Cust_Ref" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DashboardMenu" EntityType="VendorPortalModel.Store.DashboardMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LogHistory" EntityType="VendorPortalModel.Store.LogHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VendorAccessLog" EntityType="VendorPortalModel.Store.VendorAccessLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VendorLogin" EntityType="VendorPortalModel.Store.VendorLogin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VendorRegistration" EntityType="VendorPortalModel.Store.VendorRegistration" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Busi_Annu__Vendo__2A4B4B5E" Association="VendorPortalModel.Store.FK__Busi_Annu__Vendo__2A4B4B5E">
+            <End Role="VendorRegistration" EntitySet="VendorRegistration" />
+            <End Role="Busi_Annul_Turnover" EntitySet="Busi_Annul_Turnover" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Busi_Annu__Vendo__2C3393D0" Association="VendorPortalModel.Store.FK__Busi_Annu__Vendo__2C3393D0">
+            <End Role="VendorRegistration" EntitySet="VendorRegistration" />
+            <End Role="Busi_Annul_Turnover" EntitySet="Busi_Annul_Turnover" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Busi_Cust__Vendo__440B1D61" Association="VendorPortalModel.Store.FK__Busi_Cust__Vendo__440B1D61">
+            <End Role="VendorRegistration" EntitySet="VendorRegistration" />
+            <End Role="Busi_Cust_Ref" EntitySet="Busi_Cust_Ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogHistory_VendorLogin" Association="VendorPortalModel.Store.FK_LogHistory_VendorLogin">
+            <End Role="VendorLogin" EntitySet="VendorLogin" />
+            <End Role="LogHistory" EntitySet="LogHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorAccessLog_DashboardMenu" Association="VendorPortalModel.Store.FK_VendorAccessLog_DashboardMenu">
+            <End Role="DashboardMenu" EntitySet="DashboardMenu" />
+            <End Role="VendorAccessLog" EntitySet="VendorAccessLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorAccessLog_VendorLogin" Association="VendorPortalModel.Store.FK_VendorAccessLog_VendorLogin">
+            <End Role="VendorLogin" EntitySet="VendorLogin" />
+            <End Role="VendorAccessLog" EntitySet="VendorAccessLog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Busi_Annul_Turnover">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="YearFirst" Type="int" />
+          <Property Name="YearSecond" Type="int" />
+          <Property Name="YearThird" Type="int" />
+          <Property Name="YearFirstTurnOver" Type="decimal" />
+          <Property Name="YearSecondTurnOver" Type="decimal" />
+          <Property Name="YearThirdTurnOver" Type="decimal" />
+        </EntityType>
+        <EntityType Name="Busi_Cust_Ref">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorID" Type="int" />
+          <Property Name="Customer Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Contact Person" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact Number" Type="decimal" />
+        </EntityType>
+        <EntityType Name="DashboardMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DashboardLabel" Type="varchar" MaxLength="250" />
+          <Property Name="DashboardLink" Type="varchar" MaxLength="250" />
+          <Property Name="Activate" Type="bit" />
+          <Property Name="TypeOfUser" Type="int" />
+          <Property Name="Counter" Type="decimal" />
+          <Property Name="Class" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="LogHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoginUserID" Type="int" Nullable="false" />
+          <Property Name="LoginInTime" Type="datetime" />
+          <Property Name="AccessActivity" Type="int" />
+          <Property Name="LogOutTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VendorAccessLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="MenuAccessID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VendorLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Password" Type="int" Nullable="false" />
+          <Property Name="NavUserName" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="NavPassword" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="TypeOfUser" Type="int" Nullable="false" />
+          <Property Name="ActiveUser" Type="bit" />
+        </EntityType>
+        <EntityType Name="VendorRegistration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SourceRef" Type="int" />
+          <Property Name="TypeofBusi" Type="int" />
+          <Property Name="SourceRefInquiryBy" Type="varchar" MaxLength="100" />
+          <Property Name="SourceRefExternal" Type="varchar" MaxLength="100" />
+          <Property Name="SourceRefExternalOrgName" Type="varchar" MaxLength="250" />
+          <Property Name="SourceRefExternalContNo" Type="varchar" MaxLength="20" />
+          <Property Name="TypeofBusiForServiceProvider" Type="varchar" MaxLength="250" />
+          <Property Name="Title" Type="int" />
+          <Property Name="VendorName_HO" Type="varchar" MaxLength="500" />
+          <Property Name="PremisesNo_HO" Type="varchar" MaxLength="250" />
+          <Property Name="Address_1_HO" Type="varchar" MaxLength="500" />
+          <Property Name="Address_2_HO" Type="varchar" MaxLength="500" />
+          <Property Name="Country_HO" Type="varchar" MaxLength="250" />
+          <Property Name="StateRegion_HO" Type="varchar" MaxLength="250" />
+          <Property Name="PinCode_HO" Type="int" />
+          <Property Name="VendorName_WS" Type="varchar" MaxLength="250" />
+          <Property Name="PremisesNo_WS" Type="varchar" MaxLength="250" />
+          <Property Name="Address_1_WS" Type="varchar" MaxLength="250" />
+          <Property Name="Address_2_WS" Type="varchar" MaxLength="250" />
+          <Property Name="City_WS" Type="varchar" MaxLength="250" />
+          <Property Name="StateRegion_WS" Type="varchar" MaxLength="250" />
+          <Property Name="PinCode_WS" Type="int" />
+          <Property Name="WebSite" Type="varchar" MaxLength="500" />
+          <Property Name="Con_PropDirPar_Name" Type="varchar" MaxLength="500" />
+          <Property Name="Con_PropDirPar_PhoneNo" Type="varchar" MaxLength="100" />
+          <Property Name="Con_PropDirPar_MobileNo" Type="varchar" MaxLength="100" />
+          <Property Name="Con_PropDirPar_EmailID" Type="varchar" MaxLength="250" />
+          <Property Name="Con_SalesDep_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Con_SalesDep_PhoneNo" Type="varchar" MaxLength="100" />
+          <Property Name="Con_SalesDep_MobileNo" Type="varchar" MaxLength="100" />
+          <Property Name="Con_SalesDep_EmailID" Type="varchar" MaxLength="250" />
+          <Property Name="Con_AccDep_Name" Type="varchar" MaxLength="250" />
+          <Property Name="Con_AccDep_PhoneNo" Type="varchar" MaxLength="100" />
+          <Property Name="Con_AccDep_MobileNo" Type="varchar" MaxLength="100" />
+          <Property Name="Con_AccDep_EmailID" Type="varchar" MaxLength="250" />
+          <Property Name="PaymentTerm" Type="varchar" MaxLength="250" />
+          <Property Name="TotalStrengthOfManPower" Type="int" />
+          <Property Name="ShipmentTerm" Type="int" />
+          <Property Name="For_SOM_CSTNo" Type="varchar" MaxLength="100" />
+          <Property Name="For_SOM_VatNo" Type="varchar" MaxLength="100" />
+          <Property Name="For_SOM_PanNo" Type="varchar" MaxLength="50" />
+          <Property Name="For_SOM_TanNo" Type="varchar" MaxLength="50" />
+          <Property Name="For_SOM_MicroSmallMediumEnterprise" Type="bit" />
+          <Property Name="For_SOM_MSMERegNo" Type="varchar" MaxLength="250" />
+          <Property Name="For_SOM_RegisteredwithExcise" Type="varchar" MaxLength="250" />
+          <Property Name="For_SOM_ECCNo" Type="varchar" MaxLength="250" />
+          <Property Name="For_SOM_ExciseRange" Type="varchar" MaxLength="250" />
+          <Property Name="For_SOM_ExciseDivision" Type="varchar" MaxLength="250" />
+          <Property Name="For_SOM_ExciseCollectorate" Type="varchar" MaxLength="250" />
+          <Property Name="For_Others_PanNo" Type="varchar" MaxLength="50" />
+          <Property Name="For_Others_ServcieTaxRegNo" Type="varchar" MaxLength="50" />
+          <Property Name="For_Others_PFRegNo" Type="varchar" MaxLength="50" />
+          <Property Name="For_Others_ESIRegNo" Type="varchar" MaxLength="250" />
+          <Property Name="For_Others_ContractLicenseNo" Type="varchar" MaxLength="250" />
+          <Property Name="For_Others_TDS_Applicability" Type="int" />
+          <Property Name="For_Others_LowerDeductionCertiNo" Type="varchar" MaxLength="50" />
+          <Property Name="BankName" Type="varchar" MaxLength="250" />
+          <Property Name="BankBrachName" Type="varchar" MaxLength="250" />
+          <Property Name="BankAccNo" Type="varchar" MaxLength="50" />
+          <Property Name="TypeofAcc" Type="int" />
+          <Property Name="IFSCode" Type="varchar" MaxLength="11" />
+          <Property Name="MICRCODE" Type="varchar" MaxLength="9" />
+          <Property Name="Bank_EmailID_UTR" Type="varchar" MaxLength="50" />
+          <Property Name="BankingMobileNo" Type="varchar" MaxLength="100" />
+          <Property Name="ApprovedVendor" Type="bit" />
+          <Property Name="VendorCode" Type="varchar" MaxLength="100" />
+          <Property Name="Imported" Type="bit" />
+          <Property Name="Phone_HO" Type="varchar" MaxLength="50" />
+          <Property Name="FAX_HO" Type="varchar" MaxLength="50" />
+          <Property Name="Vendor No Series" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gen Posting Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="VAT Posting Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="Service Entity Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Excise Posting Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tax Liable" Type="varchar" MaxLength="20" />
+          <Property Name="Vendor Posting Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="Currency Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="Authorised by" Type="nvarchar" MaxLength="100" />
+          <Property Name="Shipment Term" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile_HO" Type="varchar" MaxLength="50" />
+          <Property Name="Email_HO" Type="varchar" MaxLength="50" />
+          <Property Name="Last_date_modified" Type="date" />
+        </EntityType>
+        <Association Name="FK__Busi_Annu__Vendo__2A4B4B5E">
+          <End Role="VendorRegistration" Type="VendorPortalModel.Store.VendorRegistration" Multiplicity="0..1" />
+          <End Role="Busi_Annul_Turnover" Type="VendorPortalModel.Store.Busi_Annul_Turnover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorRegistration">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Busi_Annul_Turnover">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Busi_Annu__Vendo__2C3393D0">
+          <End Role="VendorRegistration" Type="VendorPortalModel.Store.VendorRegistration" Multiplicity="0..1" />
+          <End Role="Busi_Annul_Turnover" Type="VendorPortalModel.Store.Busi_Annul_Turnover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorRegistration">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Busi_Annul_Turnover">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Busi_Cust__Vendo__440B1D61">
+          <End Role="VendorRegistration" Type="VendorPortalModel.Store.VendorRegistration" Multiplicity="0..1" />
+          <End Role="Busi_Cust_Ref" Type="VendorPortalModel.Store.Busi_Cust_Ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorRegistration">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Busi_Cust_Ref">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogHistory_VendorLogin">
+          <End Role="VendorLogin" Type="VendorPortalModel.Store.VendorLogin" Multiplicity="1" />
+          <End Role="LogHistory" Type="VendorPortalModel.Store.LogHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorLogin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogHistory">
+              <PropertyRef Name="LoginUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorAccessLog_DashboardMenu">
+          <End Role="DashboardMenu" Type="VendorPortalModel.Store.DashboardMenu" Multiplicity="1" />
+          <End Role="VendorAccessLog" Type="VendorPortalModel.Store.VendorAccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DashboardMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorAccessLog">
+              <PropertyRef Name="MenuAccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorAccessLog_VendorLogin">
+          <End Role="VendorLogin" Type="VendorPortalModel.Store.VendorLogin" Multiplicity="1" />
+          <End Role="VendorAccessLog" Type="VendorPortalModel.Store.VendorAccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorLogin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorAccessLog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CreateLogHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LoginUserID" Type="int" Mode="In" />
+          <Parameter Name="LoginInTime" Type="datetime" Mode="In" />
+          <Parameter Name="AccessActivity" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="DashboardDynamicMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserTypeID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetConsuptionDim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetElectricityNegativeDim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetElectricityPositiveDim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetOutputDim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetPaymentTerms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetYearList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="JAY_Item_Ledger_Entry_getLotNos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" StoreFunctionName="JAY$Item Ledger Entry_getLotNos" Schema="dbo">
+          <Parameter Name="Item_No_" Type="nvarchar" Mode="In" />
+          <Parameter Name="Location_Code" Type="nvarchar" Mode="In" />
+          <Parameter Name="OutputPara" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="LoginCredentials" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NAV_AuthorisedBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_CountryCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_CurrencyCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_ElectricityItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_ExciseBusPostingGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_GeneralBusinessPostingGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_ItemLedgerEntry_Electricity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_OutputConsumptionSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductionOrderNo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NAV_PINCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_ProdcutionOrderBOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProdBOMNo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NAV_ProdcutionOrderBOMLine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProdBOMNo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NAV_ProductionOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NAV_ServiceEntityType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_ShipmentMethod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_VatBusinessPostingGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAV_VendorPostingGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NAVVendorList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="NewOpenVendorList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="UpdateLogHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LoginUserID" Type="int" Mode="In" />
+          <Parameter Name="LogOutTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Vendor_NoSeries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VendorPortalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EDMXConnectionString" p1:LazyLoadingEnabled="true">
+          <FunctionImport Name="Vendor_NoSeries_Result3" ReturnType="Collection(VendorPortalModel.Vendor_NoSeries_Result3)" />
+          <FunctionImport Name="GetCity" ReturnType="Collection(VendorPortalModel.GetCity_Result)" />
+          <FunctionImport Name="GetCountry" ReturnType="Collection(VendorPortalModel.GetCountry_Result)" />
+          <FunctionImport Name="GetState" ReturnType="Collection(VendorPortalModel.GetState_Result)" />
+          <FunctionImport Name="GetCity_Result" ReturnType="Collection(VendorPortalModel.GetCity_Result)" />
+          <FunctionImport Name="GetPaymentTerms" ReturnType="Collection(VendorPortalModel.GetPaymentTerms_Result)" />
+          <FunctionImport Name="NewOpenVendorList" ReturnType="Collection(VendorPortalModel.NewOpenVendorList_Result2)" >
+          <Parameter Name="LastDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="DashboardDynamicMenu" ReturnType="Collection(VendorPortalModel.DashboardDynamicMenu_Result1)">
+          <Parameter Name="UserTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NAVVendorList" ReturnType="Collection(VendorPortalModel.NAVVendorList_Result)" />
+          <FunctionImport Name="GetYearList" ReturnType="Collection(VendorPortalModel.GetYearList_Result)" />
+          <FunctionImport Name="NAV_AuthorisedBy" ReturnType="Collection(VendorPortalModel.NAV_AuthorisedBy_Result)" />
+          <FunctionImport Name="NAV_CountryCode" ReturnType="Collection(VendorPortalModel.NAV_CountryCode_Result)" />
+          <FunctionImport Name="NAV_CurrencyCode" ReturnType="Collection(VendorPortalModel.NAV_CurrencyCode_Result)" />
+          <FunctionImport Name="NAV_ExciseBusPostingGroup" ReturnType="Collection(VendorPortalModel.NAV_ExciseBusPostingGroup_Result)" />
+          <FunctionImport Name="NAV_GeneralBusinessPostingGroup" ReturnType="Collection(VendorPortalModel.NAV_GeneralBusinessPostingGroup_Result)" />
+          <FunctionImport Name="NAV_ServiceEntityType" ReturnType="Collection(VendorPortalModel.NAV_ServiceEntityType_Result)" />
+          <FunctionImport Name="NAV_ShipmentMethod" ReturnType="Collection(VendorPortalModel.NAV_ShipmentMethod_Result)" />
+          <FunctionImport Name="NAV_VatBusinessPostingGroup" ReturnType="Collection(VendorPortalModel.NAV_VatBusinessPostingGroup_Result)" />
+          <FunctionImport Name="NAV_VendorPostingGroup" ReturnType="Collection(VendorPortalModel.NAV_VendorPostingGroup_Result)" />
+          <FunctionImport Name="NAV_PINCode" ReturnType="Collection(VendorPortalModel.NAV_PINCode_Result)" />
+          <FunctionImport Name="CreateLogHistory">
+            <Parameter Name="LoginUserID" Mode="In" Type="Int32" />
+            <Parameter Name="LoginInTime" Mode="In" Type="DateTime" />
+            <Parameter Name="AccessActivity" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LoginCredentials" ReturnType="Collection(VendorPortalModel.LoginCredentials_Result1)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateLogHistory">
+            <Parameter Name="LoginUserID" Mode="In" Type="Int32" />
+            <Parameter Name="LogOutTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="GetItem" ReturnType="Collection(VendorPortalModel.GetItem_Result)" />
+          <FunctionImport Name="GetConsuptionDim" ReturnType="Collection(VendorPortalModel.GetConsuptionDim_Result)" />
+          <FunctionImport Name="GetOutputDim" ReturnType="Collection(VendorPortalModel.GetOutputDim_Result)" />
+          <FunctionImport Name="NAV_ProductionOrder" ReturnType="Collection(VendorPortalModel.NAV_ProductionOrder_Result)" >
+          <Parameter Name="UserId" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Busi_Annul_Turnover" EntityType="VendorPortalModel.Busi_Annul_Turnover" />
+          <EntitySet Name="Busi_Cust_Ref" EntityType="VendorPortalModel.Busi_Cust_Ref" />
+          <EntitySet Name="DashboardMenus" EntityType="VendorPortalModel.DashboardMenu" />
+          <EntitySet Name="LogHistories" EntityType="VendorPortalModel.LogHistory" />
+          <EntitySet Name="VendorAccessLogs" EntityType="VendorPortalModel.VendorAccessLog" />
+          <EntitySet Name="VendorLogins" EntityType="VendorPortalModel.VendorLogin" />
+          <EntitySet Name="VendorRegistrations" EntityType="VendorPortalModel.VendorRegistration" />
+          <AssociationSet Name="FK__Busi_Annu__Vendo__3E52440B" Association="VendorPortalModel.FK__Busi_Annu__Vendo__3E52440B">
+            <End Role="VendorRegistration" EntitySet="VendorRegistrations" />
+            <End Role="Busi_Annul_Turnover" EntitySet="Busi_Annul_Turnover" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Busi_Annu__Vendo__3F466844" Association="VendorPortalModel.FK__Busi_Annu__Vendo__3F466844">
+            <End Role="VendorRegistration" EntitySet="VendorRegistrations" />
+            <End Role="Busi_Annul_Turnover" EntitySet="Busi_Annul_Turnover" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Busi_Cust__Vendo__4222D4EF" Association="VendorPortalModel.FK__Busi_Cust__Vendo__4222D4EF">
+            <End Role="VendorRegistration" EntitySet="VendorRegistrations" />
+            <End Role="Busi_Cust_Ref" EntitySet="Busi_Cust_Ref" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorAccessLog_DashboardMenu" Association="VendorPortalModel.FK_VendorAccessLog_DashboardMenu">
+            <End Role="DashboardMenu" EntitySet="DashboardMenus" />
+            <End Role="VendorAccessLog" EntitySet="VendorAccessLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogHistory_VendorLogin" Association="VendorPortalModel.FK_LogHistory_VendorLogin">
+            <End Role="VendorLogin" EntitySet="VendorLogins" />
+            <End Role="LogHistory" EntitySet="LogHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorAccessLog_VendorLogin" Association="VendorPortalModel.FK_VendorAccessLog_VendorLogin">
+            <End Role="VendorLogin" EntitySet="VendorLogins" />
+            <End Role="VendorAccessLog" EntitySet="VendorAccessLogs" />
+          </AssociationSet>
+          <FunctionImport Name="GetConsuptionDim1" ReturnType="Collection(VendorPortalModel.GetConsuptionDim1_Result)" />
+          <FunctionImport Name="NAV_OutputConsumptionSummary" ReturnType="Collection(VendorPortalModel.NAV_OutputConsumptionSummary_Result)">
+          <Parameter Name="ProductionOrderNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NAV_ItemLedgerEntry_Electricity" ReturnType="Collection(VendorPortalModel.NAV_ItemLedgerEntry_Electricity_Result)" />
+          <FunctionImport Name="GetElectricityNegativeDim" ReturnType="Collection(VendorPortalModel.GetElectricityNegativeDim_Result)" />
+          <FunctionImport Name="GetElectricityPositiveDim" ReturnType="Collection(VendorPortalModel.GetElectricityPositiveDim_Result)" />
+          <FunctionImport Name="NAV_ElectricityItems" ReturnType="Collection(VendorPortalModel.NAV_ElectricityItems_Result)" />
+          <FunctionImport Name="NAV_ProdcutionOrderBOMLine" ReturnType="Collection(VendorPortalModel.NAV_ProdcutionOrderBOMLine_Result)">
+          <Parameter Name="ProdBOMNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="JAY_Item_Ledger_Entry_getLotNos" ReturnType="Collection(VendorPortalModel.JAY_Item_Ledger_Entry_getLotNos_Result)">
+            <Parameter Name="Item_No_" Mode="In" Type="String" />
+            <Parameter Name="Location_Code" Mode="In" Type="String" />
+            <Parameter Name="OutputPara" Mode="InOut" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="LoginCredentials_Result">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Password" Nullable="false" />
+          <Property Type="String" Name="NavUserName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NavPassword" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="TypeOfUser" Nullable="false" />
+          <Property Type="Boolean" Name="ActiveUser" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Vendor_NoSeries_Result">
+          <Property Type="String" Name="Series_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Vendor_NoSeries_Result1">
+          <Property Type="String" Name="Series_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Vendor_NoSeries_Result2">
+          <Property Type="String" Name="Series_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Vendor_NoSeries_Result3">
+          <Property Type="String" Name="Series_Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetCity_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="GetCountry_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetState_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetPaymentTerms_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NewOpenVendorList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="TypeOfBusiness" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="19" />
+          <Property Type="String" Name="VendorName_HO" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="VendorCode" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="DashboardDynamicMenu_Result">
+          <Property Type="String" Name="DashboardLabel" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DashboardLink" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Class" Nullable="true" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="NAVVendorList_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="VendorCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="VendorName_HO" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Last_date_modified" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="NAV_AuthorisedBy_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_CountryCode_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_CurrencyCode_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="NAV_ExciseBusPostingGroup_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="NAV_GeneralBusinessPostingGroup_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_ServiceEntityType_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_ShipmentMethod_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_VatBusinessPostingGroup_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetYearList_Result">
+          <Property Type="Int32" Name="YearNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="NAV_VendorPostingGroup_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="NAV_PINCode_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="DashboardDynamicMenu_Result1">
+          <Property Type="String" Name="DashboardLabel" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DashboardLink" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Class" Nullable="true" MaxLength="2000" />
+        </ComplexType>
+        <ComplexType Name="LoginCredentials_Result1">
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Password" Nullable="false" />
+          <Property Type="String" Name="NavUserName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NavPassword" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="TypeOfUser" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="ActiveUser" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="NewOpenVendorList_Result1">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="VendorCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TypeOfBusiness" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="19" />
+          <Property Type="String" Name="VendorName_HO" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="Last_date_modified" Nullable="true" />
+          <Property Type="Boolean" Name="FeedBack" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetItem_Result">
+          <Property Type="String" Name="No_" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetConsuptionDim_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetOutputDim_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="NAV_ProductionOrder_Result">
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="no" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Sourceno" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="BOMNo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="LocationCode" Nullable="false" MaxLength="10" />
+          </ComplexType>
+        <ComplexType Name="NewOpenVendorList_Result2">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="VendorCode" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Last_date_modified" Nullable="true" />
+          <Property Type="String" Name="TypeOfBusiness" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="19" />
+          <Property Type="String" Name="VendorName_HO" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="FeedBack" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Busi_Annul_Turnover">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VendorId" />
+          <Property Type="Int32" Name="YearFirst" />
+          <Property Type="Int32" Name="YearSecond" />
+          <Property Type="Int32" Name="YearThird" />
+          <Property Type="Decimal" Name="YearFirstTurnOver" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="YearSecondTurnOver" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="YearThirdTurnOver" Precision="18" Scale="0" />
+          <NavigationProperty Name="VendorRegistration" Relationship="VendorPortalModel.FK__Busi_Annu__Vendo__3E52440B" FromRole="Busi_Annul_Turnover" ToRole="VendorRegistration" />
+          <NavigationProperty Name="VendorRegistration1" Relationship="VendorPortalModel.FK__Busi_Annu__Vendo__3F466844" FromRole="Busi_Annul_Turnover" ToRole="VendorRegistration" />
+        </EntityType>
+        <EntityType Name="Busi_Cust_Ref">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VendorID" />
+          <Property Type="String" Name="Customer_Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Location" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Contact_Person" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Contact_Number" Precision="18" Scale="0" />
+          <NavigationProperty Name="VendorRegistration" Relationship="VendorPortalModel.FK__Busi_Cust__Vendo__4222D4EF" FromRole="Busi_Cust_Ref" ToRole="VendorRegistration" />
+        </EntityType>
+        <EntityType Name="DashboardMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DashboardLabel" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DashboardLink" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Activate" />
+          <Property Type="Int32" Name="TypeOfUser" />
+          <Property Type="Decimal" Name="Counter" Precision="18" Scale="0" />
+          <Property Type="String" Name="Class" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VendorAccessLogs" Relationship="VendorPortalModel.FK_VendorAccessLog_DashboardMenu" FromRole="DashboardMenu" ToRole="VendorAccessLog" />
+        </EntityType>
+        <EntityType Name="LogHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LoginUserID" Nullable="false" />
+          <Property Type="DateTime" Name="LoginInTime" Precision="3" />
+          <Property Type="Int32" Name="AccessActivity" />
+          <Property Type="DateTime" Name="LogOutTime" Precision="3" />
+          <NavigationProperty Name="VendorLogin" Relationship="VendorPortalModel.FK_LogHistory_VendorLogin" FromRole="LogHistory" ToRole="VendorLogin" />
+        </EntityType>
+        <EntityType Name="VendorAccessLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="MenuAccessID" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="DashboardMenu" Relationship="VendorPortalModel.FK_VendorAccessLog_DashboardMenu" FromRole="VendorAccessLog" ToRole="DashboardMenu" />
+          <NavigationProperty Name="VendorLogin" Relationship="VendorPortalModel.FK_VendorAccessLog_VendorLogin" FromRole="VendorAccessLog" ToRole="VendorLogin" />
+        </EntityType>
+        <EntityType Name="VendorLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Password" Nullable="false" />
+          <Property Type="String" Name="NavUserName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NavPassword" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TypeOfUser" Nullable="false" />
+          <Property Type="Boolean" Name="ActiveUser" />
+          <NavigationProperty Name="LogHistories" Relationship="VendorPortalModel.FK_LogHistory_VendorLogin" FromRole="VendorLogin" ToRole="LogHistory" />
+          <NavigationProperty Name="VendorAccessLogs" Relationship="VendorPortalModel.FK_VendorAccessLog_VendorLogin" FromRole="VendorLogin" ToRole="VendorAccessLog" />
+        </EntityType>
+        <EntityType Name="VendorRegistration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SourceRef" />
+          <Property Type="Int32" Name="TypeofBusi" />
+          <Property Type="String" Name="SourceRefInquiryBy" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SourceRefExternal" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SourceRefExternalOrgName" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SourceRefExternalContNo" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TypeofBusiForServiceProvider" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Title" />
+          <Property Type="String" Name="VendorName_HO" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PremisesNo_HO" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address_1_HO" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address_2_HO" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Country_HO" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StateRegion_HO" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PinCode_HO" />
+          <Property Type="String" Name="VendorName_WS" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PremisesNo_WS" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address_1_WS" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address_2_WS" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City_WS" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StateRegion_WS" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PinCode_WS" />
+          <Property Type="String" Name="WebSite" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_PropDirPar_Name" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_PropDirPar_PhoneNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_PropDirPar_MobileNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_PropDirPar_EmailID" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_SalesDep_Name" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_SalesDep_PhoneNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_SalesDep_MobileNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_SalesDep_EmailID" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_AccDep_Name" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_AccDep_PhoneNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_AccDep_MobileNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Con_AccDep_EmailID" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PaymentTerm" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TotalStrengthOfManPower" />
+          <Property Type="Int32" Name="ShipmentTerm" />
+          <Property Type="String" Name="For_SOM_CSTNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_VatNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_PanNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_TanNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="For_SOM_MicroSmallMediumEnterprise" />
+          <Property Type="String" Name="For_SOM_MSMERegNo" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_RegisteredwithExcise" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_ECCNo" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_ExciseRange" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_ExciseDivision" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_SOM_ExciseCollectorate" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_Others_PanNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_Others_ServcieTaxRegNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_Others_PFRegNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_Others_ESIRegNo" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="For_Others_ContractLicenseNo" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="For_Others_TDS_Applicability" />
+          <Property Type="String" Name="For_Others_LowerDeductionCertiNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankName" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankBrachName" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankAccNo" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TypeofAcc" />
+          <Property Type="String" Name="IFSCode" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MICRCODE" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Bank_EmailID_UTR" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankingMobileNo" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="ApprovedVendor" />
+          <Property Type="String" Name="VendorCode" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Imported" />
+          <Property Type="String" Name="Phone_HO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FAX_HO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vendor_No_Series" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Gen_Posting_Group" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VAT_Posting_Group" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Service_Entity_Type" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Excise_Posting_Group" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Tax_Liable" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vendor_Posting_Group" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Currency_Code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Authorised_by" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Shipment_Term" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile_HO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email_HO" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="Last_date_modified" Precision="0" />
+          <NavigationProperty Name="Busi_Annul_Turnover" Relationship="VendorPortalModel.FK__Busi_Annu__Vendo__3E52440B" FromRole="VendorRegistration" ToRole="Busi_Annul_Turnover" />
+          <NavigationProperty Name="Busi_Annul_Turnover1" Relationship="VendorPortalModel.FK__Busi_Annu__Vendo__3F466844" FromRole="VendorRegistration" ToRole="Busi_Annul_Turnover" />
+          <NavigationProperty Name="Busi_Cust_Ref" Relationship="VendorPortalModel.FK__Busi_Cust__Vendo__4222D4EF" FromRole="VendorRegistration" ToRole="Busi_Cust_Ref" />
+        </EntityType>
+        <Association Name="FK__Busi_Annu__Vendo__3E52440B">
+          <End Type="VendorPortalModel.VendorRegistration" Role="VendorRegistration" Multiplicity="0..1" />
+          <End Type="VendorPortalModel.Busi_Annul_Turnover" Role="Busi_Annul_Turnover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorRegistration">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Busi_Annul_Turnover">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Busi_Annu__Vendo__3F466844">
+          <End Type="VendorPortalModel.VendorRegistration" Role="VendorRegistration" Multiplicity="0..1" />
+          <End Type="VendorPortalModel.Busi_Annul_Turnover" Role="Busi_Annul_Turnover" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorRegistration">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Busi_Annul_Turnover">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Busi_Cust__Vendo__4222D4EF">
+          <End Type="VendorPortalModel.VendorRegistration" Role="VendorRegistration" Multiplicity="0..1" />
+          <End Type="VendorPortalModel.Busi_Cust_Ref" Role="Busi_Cust_Ref" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorRegistration">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Busi_Cust_Ref">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorAccessLog_DashboardMenu">
+          <End Type="VendorPortalModel.DashboardMenu" Role="DashboardMenu" Multiplicity="1" />
+          <End Type="VendorPortalModel.VendorAccessLog" Role="VendorAccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DashboardMenu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorAccessLog">
+              <PropertyRef Name="MenuAccessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogHistory_VendorLogin">
+          <End Type="VendorPortalModel.VendorLogin" Role="VendorLogin" Multiplicity="1" />
+          <End Type="VendorPortalModel.LogHistory" Role="LogHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorLogin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LogHistory">
+              <PropertyRef Name="LoginUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorAccessLog_VendorLogin">
+          <End Type="VendorPortalModel.VendorLogin" Role="VendorLogin" Multiplicity="1" />
+          <End Type="VendorPortalModel.VendorAccessLog" Role="VendorAccessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorLogin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VendorAccessLog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetConsuptionDim1_Result">
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_ProductionOrder1_Result">
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="no" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Sourceno" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="NAV_OutputConsumptionSummary_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="PostingDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DocumentDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="EntryType" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="ItemNo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="DocNo" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Qty" Nullable="false" Precision="38" Scale="20" />
+          </ComplexType>
+        <ComplexType Name="NAV_ItemLedgerEntry_Electricity_Result">
+          <Property Type="String" Name="no" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Sourceno" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetElectricityNegativeDim_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetElectricityPositiveDim_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="NAV_ElectricityItems_Result">
+          <Property Type="String" Name="Item" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="NAV_ProdcutionOrderBOMLine_Result">
+          <Property Type="String" Name="No" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Desc" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="JAY_Item_Ledger_Entry_getLotNos_Result">
+          <Property Type="String" Name="Lot_No_" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="RemainingQty" Nullable="true" Precision="38" Scale="20" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VendorPortalModelStoreContainer" CdmEntityContainer="EDMXConnectionString">
+          <FunctionImportMapping FunctionImportName="Vendor_NoSeries_Result3" FunctionName="VendorPortalModel.Store.Vendor_NoSeries">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.Vendor_NoSeries_Result3">
+                <ScalarProperty Name="Series_Code" ColumnName="Series Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCity" FunctionName="VendorPortalModel.Store.GetCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetCity_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCountry" FunctionName="VendorPortalModel.Store.GetCountry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetCountry_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetState" FunctionName="VendorPortalModel.Store.GetState">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetState_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetCity_Result" FunctionName="VendorPortalModel.Store.GetCity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetCity_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPaymentTerms" FunctionName="VendorPortalModel.Store.GetPaymentTerms">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetPaymentTerms_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NewOpenVendorList" FunctionName="VendorPortalModel.Store.NewOpenVendorList">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NewOpenVendorList_Result2">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="Last_date_modified" ColumnName="Last_date_modified" />
+                <ScalarProperty Name="TypeOfBusiness" ColumnName="TypeOfBusiness" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="VendorName_HO" ColumnName="VendorName_HO" />
+                <ScalarProperty Name="FeedBack" ColumnName="FeedBack" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DashboardDynamicMenu" FunctionName="VendorPortalModel.Store.DashboardDynamicMenu">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.DashboardDynamicMenu_Result1">
+                <ScalarProperty Name="DashboardLabel" ColumnName="DashboardLabel" />
+                <ScalarProperty Name="DashboardLink" ColumnName="DashboardLink" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAVVendorList" FunctionName="VendorPortalModel.Store.NAVVendorList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAVVendorList_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="VendorName_HO" ColumnName="VendorName_HO" />
+                <ScalarProperty Name="Last_date_modified" ColumnName="Last_date_modified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetYearList" FunctionName="VendorPortalModel.Store.GetYearList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetYearList_Result">
+                <ScalarProperty Name="YearNo" ColumnName="YearNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_AuthorisedBy" FunctionName="VendorPortalModel.Store.NAV_AuthorisedBy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_AuthorisedBy_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_CountryCode" FunctionName="VendorPortalModel.Store.NAV_CountryCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_CountryCode_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_CurrencyCode" FunctionName="VendorPortalModel.Store.NAV_CurrencyCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_CurrencyCode_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ExciseBusPostingGroup" FunctionName="VendorPortalModel.Store.NAV_ExciseBusPostingGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ExciseBusPostingGroup_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_GeneralBusinessPostingGroup" FunctionName="VendorPortalModel.Store.NAV_GeneralBusinessPostingGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_GeneralBusinessPostingGroup_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ServiceEntityType" FunctionName="VendorPortalModel.Store.NAV_ServiceEntityType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ServiceEntityType_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ShipmentMethod" FunctionName="VendorPortalModel.Store.NAV_ShipmentMethod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ShipmentMethod_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_VatBusinessPostingGroup" FunctionName="VendorPortalModel.Store.NAV_VatBusinessPostingGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_VatBusinessPostingGroup_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_VendorPostingGroup" FunctionName="VendorPortalModel.Store.NAV_VendorPostingGroup" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_VendorPostingGroup_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_PINCode" FunctionName="VendorPortalModel.Store.NAV_PINCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_PINCode_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateLogHistory" FunctionName="VendorPortalModel.Store.CreateLogHistory" />
+          <FunctionImportMapping FunctionImportName="LoginCredentials" FunctionName="VendorPortalModel.Store.LoginCredentials">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.LoginCredentials_Result1">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NavUserName" ColumnName="NavUserName" />
+                <ScalarProperty Name="NavPassword" ColumnName="NavPassword" />
+                <ScalarProperty Name="TypeOfUser" ColumnName="TypeOfUser" />
+                <ScalarProperty Name="ActiveUser" ColumnName="ActiveUser" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateLogHistory" FunctionName="VendorPortalModel.Store.UpdateLogHistory" />
+          <FunctionImportMapping FunctionImportName="GetItem" FunctionName="VendorPortalModel.Store.GetItem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetItem_Result">
+                <ScalarProperty Name="No_" ColumnName="No_" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetOutputDim" FunctionName="VendorPortalModel.Store.GetOutputDim">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetOutputDim_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Busi_Annul_Turnover">
+            <EntityTypeMapping TypeName="VendorPortalModel.Busi_Annul_Turnover">
+              <MappingFragment StoreEntitySet="Busi_Annul_Turnover">
+                <ScalarProperty Name="YearThirdTurnOver" ColumnName="YearThirdTurnOver" />
+                <ScalarProperty Name="YearSecondTurnOver" ColumnName="YearSecondTurnOver" />
+                <ScalarProperty Name="YearFirstTurnOver" ColumnName="YearFirstTurnOver" />
+                <ScalarProperty Name="YearThird" ColumnName="YearThird" />
+                <ScalarProperty Name="YearSecond" ColumnName="YearSecond" />
+                <ScalarProperty Name="YearFirst" ColumnName="YearFirst" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Busi_Cust_Ref">
+            <EntityTypeMapping TypeName="VendorPortalModel.Busi_Cust_Ref">
+              <MappingFragment StoreEntitySet="Busi_Cust_Ref">
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Contact_Person" ColumnName="Contact Person" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer Name" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DashboardMenus">
+            <EntityTypeMapping TypeName="VendorPortalModel.DashboardMenu">
+              <MappingFragment StoreEntitySet="DashboardMenu">
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="TypeOfUser" ColumnName="TypeOfUser" />
+                <ScalarProperty Name="Activate" ColumnName="Activate" />
+                <ScalarProperty Name="DashboardLink" ColumnName="DashboardLink" />
+                <ScalarProperty Name="DashboardLabel" ColumnName="DashboardLabel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogHistories">
+            <EntityTypeMapping TypeName="VendorPortalModel.LogHistory">
+              <MappingFragment StoreEntitySet="LogHistory">
+                <ScalarProperty Name="LogOutTime" ColumnName="LogOutTime" />
+                <ScalarProperty Name="AccessActivity" ColumnName="AccessActivity" />
+                <ScalarProperty Name="LoginInTime" ColumnName="LoginInTime" />
+                <ScalarProperty Name="LoginUserID" ColumnName="LoginUserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorAccessLogs">
+            <EntityTypeMapping TypeName="VendorPortalModel.VendorAccessLog">
+              <MappingFragment StoreEntitySet="VendorAccessLog">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="MenuAccessID" ColumnName="MenuAccessID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorLogins">
+            <EntityTypeMapping TypeName="VendorPortalModel.VendorLogin">
+              <MappingFragment StoreEntitySet="VendorLogin">
+                <ScalarProperty Name="ActiveUser" ColumnName="ActiveUser" />
+                <ScalarProperty Name="TypeOfUser" ColumnName="TypeOfUser" />
+                <ScalarProperty Name="NavPassword" ColumnName="NavPassword" />
+                <ScalarProperty Name="NavUserName" ColumnName="NavUserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorRegistrations">
+            <EntityTypeMapping TypeName="VendorPortalModel.VendorRegistration">
+              <MappingFragment StoreEntitySet="VendorRegistration">
+                <ScalarProperty Name="Last_date_modified" ColumnName="Last_date_modified" />
+                <ScalarProperty Name="Email_HO" ColumnName="Email_HO" />
+                <ScalarProperty Name="Mobile_HO" ColumnName="Mobile_HO" />
+                <ScalarProperty Name="Shipment_Term" ColumnName="Shipment Term" />
+                <ScalarProperty Name="Authorised_by" ColumnName="Authorised by" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency Code" />
+                <ScalarProperty Name="Vendor_Posting_Group" ColumnName="Vendor Posting Group" />
+                <ScalarProperty Name="Tax_Liable" ColumnName="Tax Liable" />
+                <ScalarProperty Name="Excise_Posting_Group" ColumnName="Excise Posting Group" />
+                <ScalarProperty Name="Service_Entity_Type" ColumnName="Service Entity Type" />
+                <ScalarProperty Name="VAT_Posting_Group" ColumnName="VAT Posting Group" />
+                <ScalarProperty Name="Gen_Posting_Group" ColumnName="Gen Posting Group" />
+                <ScalarProperty Name="Vendor_No_Series" ColumnName="Vendor No Series" />
+                <ScalarProperty Name="FAX_HO" ColumnName="FAX_HO" />
+                <ScalarProperty Name="Phone_HO" ColumnName="Phone_HO" />
+                <ScalarProperty Name="Imported" ColumnName="Imported" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="ApprovedVendor" ColumnName="ApprovedVendor" />
+                <ScalarProperty Name="BankingMobileNo" ColumnName="BankingMobileNo" />
+                <ScalarProperty Name="Bank_EmailID_UTR" ColumnName="Bank_EmailID_UTR" />
+                <ScalarProperty Name="MICRCODE" ColumnName="MICRCODE" />
+                <ScalarProperty Name="IFSCode" ColumnName="IFSCode" />
+                <ScalarProperty Name="TypeofAcc" ColumnName="TypeofAcc" />
+                <ScalarProperty Name="BankAccNo" ColumnName="BankAccNo" />
+                <ScalarProperty Name="BankBrachName" ColumnName="BankBrachName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="For_Others_LowerDeductionCertiNo" ColumnName="For_Others_LowerDeductionCertiNo" />
+                <ScalarProperty Name="For_Others_TDS_Applicability" ColumnName="For_Others_TDS_Applicability" />
+                <ScalarProperty Name="For_Others_ContractLicenseNo" ColumnName="For_Others_ContractLicenseNo" />
+                <ScalarProperty Name="For_Others_ESIRegNo" ColumnName="For_Others_ESIRegNo" />
+                <ScalarProperty Name="For_Others_PFRegNo" ColumnName="For_Others_PFRegNo" />
+                <ScalarProperty Name="For_Others_ServcieTaxRegNo" ColumnName="For_Others_ServcieTaxRegNo" />
+                <ScalarProperty Name="For_Others_PanNo" ColumnName="For_Others_PanNo" />
+                <ScalarProperty Name="For_SOM_ExciseCollectorate" ColumnName="For_SOM_ExciseCollectorate" />
+                <ScalarProperty Name="For_SOM_ExciseDivision" ColumnName="For_SOM_ExciseDivision" />
+                <ScalarProperty Name="For_SOM_ExciseRange" ColumnName="For_SOM_ExciseRange" />
+                <ScalarProperty Name="For_SOM_ECCNo" ColumnName="For_SOM_ECCNo" />
+                <ScalarProperty Name="For_SOM_RegisteredwithExcise" ColumnName="For_SOM_RegisteredwithExcise" />
+                <ScalarProperty Name="For_SOM_MSMERegNo" ColumnName="For_SOM_MSMERegNo" />
+                <ScalarProperty Name="For_SOM_MicroSmallMediumEnterprise" ColumnName="For_SOM_MicroSmallMediumEnterprise" />
+                <ScalarProperty Name="For_SOM_TanNo" ColumnName="For_SOM_TanNo" />
+                <ScalarProperty Name="For_SOM_PanNo" ColumnName="For_SOM_PanNo" />
+                <ScalarProperty Name="For_SOM_VatNo" ColumnName="For_SOM_VatNo" />
+                <ScalarProperty Name="For_SOM_CSTNo" ColumnName="For_SOM_CSTNo" />
+                <ScalarProperty Name="ShipmentTerm" ColumnName="ShipmentTerm" />
+                <ScalarProperty Name="TotalStrengthOfManPower" ColumnName="TotalStrengthOfManPower" />
+                <ScalarProperty Name="PaymentTerm" ColumnName="PaymentTerm" />
+                <ScalarProperty Name="Con_AccDep_EmailID" ColumnName="Con_AccDep_EmailID" />
+                <ScalarProperty Name="Con_AccDep_MobileNo" ColumnName="Con_AccDep_MobileNo" />
+                <ScalarProperty Name="Con_AccDep_PhoneNo" ColumnName="Con_AccDep_PhoneNo" />
+                <ScalarProperty Name="Con_AccDep_Name" ColumnName="Con_AccDep_Name" />
+                <ScalarProperty Name="Con_SalesDep_EmailID" ColumnName="Con_SalesDep_EmailID" />
+                <ScalarProperty Name="Con_SalesDep_MobileNo" ColumnName="Con_SalesDep_MobileNo" />
+                <ScalarProperty Name="Con_SalesDep_PhoneNo" ColumnName="Con_SalesDep_PhoneNo" />
+                <ScalarProperty Name="Con_SalesDep_Name" ColumnName="Con_SalesDep_Name" />
+                <ScalarProperty Name="Con_PropDirPar_EmailID" ColumnName="Con_PropDirPar_EmailID" />
+                <ScalarProperty Name="Con_PropDirPar_MobileNo" ColumnName="Con_PropDirPar_MobileNo" />
+                <ScalarProperty Name="Con_PropDirPar_PhoneNo" ColumnName="Con_PropDirPar_PhoneNo" />
+                <ScalarProperty Name="Con_PropDirPar_Name" ColumnName="Con_PropDirPar_Name" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="PinCode_WS" ColumnName="PinCode_WS" />
+                <ScalarProperty Name="StateRegion_WS" ColumnName="StateRegion_WS" />
+                <ScalarProperty Name="City_WS" ColumnName="City_WS" />
+                <ScalarProperty Name="Address_2_WS" ColumnName="Address_2_WS" />
+                <ScalarProperty Name="Address_1_WS" ColumnName="Address_1_WS" />
+                <ScalarProperty Name="PremisesNo_WS" ColumnName="PremisesNo_WS" />
+                <ScalarProperty Name="VendorName_WS" ColumnName="VendorName_WS" />
+                <ScalarProperty Name="PinCode_HO" ColumnName="PinCode_HO" />
+                <ScalarProperty Name="StateRegion_HO" ColumnName="StateRegion_HO" />
+                <ScalarProperty Name="Country_HO" ColumnName="Country_HO" />
+                <ScalarProperty Name="Address_2_HO" ColumnName="Address_2_HO" />
+                <ScalarProperty Name="Address_1_HO" ColumnName="Address_1_HO" />
+                <ScalarProperty Name="PremisesNo_HO" ColumnName="PremisesNo_HO" />
+                <ScalarProperty Name="VendorName_HO" ColumnName="VendorName_HO" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TypeofBusiForServiceProvider" ColumnName="TypeofBusiForServiceProvider" />
+                <ScalarProperty Name="SourceRefExternalContNo" ColumnName="SourceRefExternalContNo" />
+                <ScalarProperty Name="SourceRefExternalOrgName" ColumnName="SourceRefExternalOrgName" />
+                <ScalarProperty Name="SourceRefExternal" ColumnName="SourceRefExternal" />
+                <ScalarProperty Name="SourceRefInquiryBy" ColumnName="SourceRefInquiryBy" />
+                <ScalarProperty Name="TypeofBusi" ColumnName="TypeofBusi" />
+                <ScalarProperty Name="SourceRef" ColumnName="SourceRef" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetConsuptionDim1" FunctionName="VendorPortalModel.Store.GetConsuptionDim">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetConsuptionDim1_Result">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ProductionOrder" FunctionName="VendorPortalModel.Store.NAV_ProductionOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ProductionOrder_Result">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="Sourceno" ColumnName="Sourceno" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="BOMNo" ColumnName="BOMNo" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_OutputConsumptionSummary" FunctionName="VendorPortalModel.Store.NAV_OutputConsumptionSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_OutputConsumptionSummary_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PostingDate" ColumnName="PostingDate" />
+                <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+                <ScalarProperty Name="EntryType" ColumnName="EntryType" />
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ItemLedgerEntry_Electricity" FunctionName="VendorPortalModel.Store.NAV_ItemLedgerEntry_Electricity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ItemLedgerEntry_Electricity_Result">
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="Sourceno" ColumnName="Sourceno" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetElectricityNegativeDim" FunctionName="VendorPortalModel.Store.GetElectricityNegativeDim">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetElectricityNegativeDim_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetElectricityPositiveDim" FunctionName="VendorPortalModel.Store.GetElectricityPositiveDim">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.GetElectricityPositiveDim_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ElectricityItems" FunctionName="VendorPortalModel.Store.NAV_ElectricityItems" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ElectricityItems_Result">
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NAV_ProdcutionOrderBOMLine" FunctionName="VendorPortalModel.Store.NAV_ProdcutionOrderBOMLine">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.NAV_ProdcutionOrderBOMLine_Result">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="JAY_Item_Ledger_Entry_getLotNos" FunctionName="VendorPortalModel.Store.JAY_Item_Ledger_Entry_getLotNos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VendorPortalModel.JAY_Item_Ledger_Entry_getLotNos_Result">
+                <ScalarProperty Name="Lot_No_" ColumnName="Lot No_" />
+                <ScalarProperty Name="RemainingQty" ColumnName="RemainingQty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
